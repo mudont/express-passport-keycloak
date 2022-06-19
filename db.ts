@@ -1,6 +1,6 @@
-var sqlite3 = require('sqlite3');
-var mkdirp = require('mkdirp');
-var crypto = require('crypto');
+const sqlite3 = require('sqlite3');
+const mkdirp = require('mkdirp');
+const crypt = require('crypto');
 
 mkdirp.sync('./var/db');
 
@@ -34,10 +34,10 @@ db.serialize(function() {
   )");
   
   // create an initial user (username: alice, password: letmein)
-  var salt = crypto.randomBytes(16);
+  var salt = crypt.randomBytes(16);
   db.run('INSERT OR IGNORE INTO users (username, hashed_password, salt) VALUES (?, ?, ?)', [
     'alice',
-    crypto.pbkdf2Sync('letmein', salt, 310000, 32, 'sha256'),
+    crypt.pbkdf2Sync('letmein', salt, 310000, 32, 'sha256'),
     salt
   ]);
 });
