@@ -1,21 +1,8 @@
 import { NextFunction } from "express";
-import type { User } from "../types";
+import type { User, MyRequest, MyResponse, Handler } from "../types";
 
 var express = require("express");
 var db = require("../db");
-
-type MyRequest = Request & {
-  user: User;
-  render: Function;
-  params: { id: string };
-  body: { title: string; filter: string; completed: boolean };
-};
-type MyResponse = Response & {
-  locals: any;
-  render: Function;
-  redirect: Function;
-};
-type Handler = (req: MyRequest, res: MyResponse, next: NextFunction) => void;
 
 let fetchTodos: Handler = (req, res, next) => {
   db.all(

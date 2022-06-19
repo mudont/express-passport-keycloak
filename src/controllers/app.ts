@@ -10,8 +10,8 @@ var passport = require("passport");
 
 var SQLiteStore = require("connect-sqlite3")(session);
 
-var indexRouter = require("./routes/index");
-var authRouter = require("./routes/auth");
+var indexRouter = require("../routes/index");
+var authRouter = require("../routes/auth");
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
+    store: new SQLiteStore({ db: "sessions.db", dir: "../../var/db" }),
   })
 );
 app.use(passport.authenticate("session"));

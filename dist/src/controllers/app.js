@@ -12,8 +12,8 @@ var logger = require("morgan");
 var session = require("express-session");
 var passport = require("passport");
 var SQLiteStore = require("connect-sqlite3")(session);
-var indexRouter = require("./routes/index");
-var authRouter = require("./routes/auth");
+var indexRouter = require("../routes/index");
+var authRouter = require("../routes/auth");
 var app = (0, express_1.default)();
 app.locals.pluralize = require("pluralize");
 // view engine setup
